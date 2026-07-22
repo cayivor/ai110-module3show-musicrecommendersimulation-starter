@@ -69,7 +69,7 @@ Prompts:
 - Genres or moods that are underrepresented  
 - Cases where the system overfits to one preference  
 - Ways the scoring might unintentionally favor some users  
-
+One major limitation discovered during stress testing is the algorithm's vulnerability to "genre silos" and strict string-matching failures. Because the scoring logic heavily weights the categorical genre match (+2.0 points) using strict text equivalency, users might miss highly relevant tracks if their profile requests "LoFi Chill" but the dataset is labeled simply as "Lofi". Additionally, this heavy categorization weight creates a filter bubble where cross-genre songs with the exact target energy and mood are mathematically suppressed in favor of weaker acoustic matches that happen to share the preferred genre tag.
 ---
 
 ## 7. Evaluation  
@@ -84,7 +84,14 @@ Prompts:
 - Any simple tests or comparisons you ran  
 
 No need for numeric metrics unless you created some.
+### Stress Test Results
 
+During evaluation, I tested four distinct user profiles: High-Energy Pop, Chill Lofi, Deep Intense Rock, and an adversarial "High-Energy Sad Classical" curveball. The biggest surprise was an unintended string-matching failure in the Chill Lofi profile. The system searched for "LoFi Chill", but the dataset used "Lofi", meaning the top song missed out on the +2.0 genre bonus. However, the system still successfully ranked the correct track ("Coffee Shop Rain") as number one because the continuous energy and mood mathematical fallbacks worked perfectly to pull it to the top.
+
+### Profile Comparisons
+
+*   **High-Energy Pop vs. Deep Intense Rock:** Both profiles requested massive energy targets (0.90 and 0.95). However, the recommendations were completely distinct. The algorithm successfully used the Genre and Mood categorical anchors to separate the users, proving the system can differentiate between "upbeat dance energy" and "heavy aggressive energy."
+*   **Chill Lofi vs. Deep Intense Rock:** These outputs demonstrated the power of the `energy_similarity` formula. While the Rock profile pulled tracks near 1.00 energy, the Lofi profile completely abandoned those tracks, successfully identifying and elevating slow, low-energy tracks (Energy ~0.20). This proves the absolute difference math effectively measures and matches the listener's target vibe, even when text filters fail.
 ---
 
 ## 8. Future Work  

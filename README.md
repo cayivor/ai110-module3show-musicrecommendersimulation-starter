@@ -146,4 +146,45 @@ Top recommendations:
    Why: Energy similarity (+0.94)
 
 
+## Output
+Top recommendations:
+
+1. Storm Runner by Voltline (Score: 0.99)
+   Why: Energy similarity (+0.99)
+
+2. Gym Hero by Max Pulse (Score: 0.97)
+   Why: Energy similarity (+0.97)
+
+3. Mountain Crash by The Heavies (Score: 0.95)
+   Why: Energy similarity (+0.95)
+
+Top recommendations:
+
+1. Coffee Shop Rain by LoFi Chill (Score: 2.00)
+   Why: Mood match (+1.0), Energy similarity (+1.00)
+
+2. Golden Strings by The Quartets (Score: 0.95)
+   Why: Energy similarity (+0.95)
+
+3. Spacewalk Thoughts by Orbit Bloom (Score: 0.92)
+   Why: Energy similarity (+0.92)
+  
+
+Top recommendations:
+
+1. Mountain Crash by The Heavies (Score: 4.00)
+   Why: Genre match (+2.0), Mood match (+1.0), Energy similarity (+1.00)
+
+2. Gym Hero by Max Pulse (Score: 0.98)
+   Why: Energy similarity (+0.98)
+
+3. Storm Runner by Voltline (Score: 0.96)
+   Why: Energy similarity (+0.96)
+
+user_prefs = {
+        "favorite_genre": "Classical",
+        "favorite_mood": "Sad",
+        "target_energy": 0.95 
+    }
+
 
